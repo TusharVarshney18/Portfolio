@@ -19,33 +19,35 @@ var typed = new Typed(".multiple-text", {
    loop: true,
 });
 
-const form = document.querySelector("form");
-form.addEventListener("submit", async (e) => {
-   e.preventDefault();
+// for backend
 
-   const formdata = {
-      fullName: form.fullName.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      subject: form.subject.value,
-      message: form.message.value,
-   };
-   try {
-      const response = await fetch("http://localhost:5000/api/contact", {
-         method: "POST",
-         headers: {
-            "Content-type": "application/json",
-         },
-         body: JSON.stringify(formdata),
-      });
+// const form = document.querySelector("form");
+// form.addEventListener("submit", async (e) => {
+//    e.preventDefault();
 
-      alert("Your message has been Submit Successfully");
+//    const formdata = {
+//       fullName: form.fullName.value,
+//       email: form.email.value,
+//       phone: form.phone.value,
+//       subject: form.subject.value,
+//       message: form.message.value,
+//    };
+//    try {
+//       const response = await fetch("http://localhost:5000/api/contact", {
+//          method: "POST",
+//          headers: {
+//             "Content-type": "application/json",
+//          },
+//          body: JSON.stringify(formdata),
+//       });
 
-      const result = await response.json();
-      form.reset();
+//       alert("Your message has been Submit Successfully");
 
-      console.log(formdata);
-   } catch (error) {
-      alert("Failed to send message. Please try again later.");
-   }
-});
+//       const result = await response.json();
+//       form.reset();
+
+//       console.log(formdata);
+//    } catch (error) {
+//       alert("Failed to send message. Please try again later.");
+//    }
+// });
