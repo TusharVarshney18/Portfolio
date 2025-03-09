@@ -1,53 +1,38 @@
+// Select elements
 const menu = document.querySelector("#menu-icon");
-const navbar = document.querySelector(".navbar");
+const navbar = document.querySelector(".slider-nav");
 
-menu.onclick = () => {
-   menu.classList.toggle("bx-x");
-   navbar.classList.toggle("active");
+// Function to toggle navbar visibility
+const toggleMenu = () => {
+   menu.classList.toggle("bx-x");  // Change icon
+   navbar.classList.toggle("active"); // Show/Hide navbar
 };
 
-window.onscroll = () => {
+// Open/Close menu when clicking the menu icon
+menu.addEventListener("click", (e) => {
+   e.stopPropagation(); // Prevents immediate closing when clicking icon
+   toggleMenu();
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", (e) => {
+   if (!menu.contains(e.target) && !navbar.contains(e.target)) {
+      menu.classList.remove("bx-x");
+      navbar.classList.remove("active");
+   }
+});
+
+// Close menu when scrolling
+window.addEventListener("scroll", () => {
    menu.classList.remove("bx-x");
    navbar.classList.remove("active");
-};
+});
 
+// Typing Effect (No Changes)
 var typed = new Typed(".multiple-text", {
-   strings: ["Front-end Developer", "Back-end Developer."],
+   strings: ["Front-end Developer", "Back-end Developer"],
    typeSpeed: 50,
    backSpeed: 80,
    backDelay: 1200,
    loop: true,
 });
-
-// for backend
-
-// const form = document.querySelector("form");
-// form.addEventListener("submit", async (e) => {
-//    e.preventDefault();
-
-//    const formdata = {
-//       fullName: form.fullName.value,
-//       email: form.email.value,
-//       phone: form.phone.value,
-//       subject: form.subject.value,
-//       message: form.message.value,
-//    };
-//    try {
-//       const response = await fetch("http://localhost:5000/api/contact", {
-//          method: "POST",
-//          headers: {
-//             "Content-type": "application/json",
-//          },
-//          body: JSON.stringify(formdata),
-//       });
-
-//       alert("Your message has been Submit Successfully");
-
-//       const result = await response.json();
-//       form.reset();
-
-//       console.log(formdata);
-//    } catch (error) {
-//       alert("Failed to send message. Please try again later.");
-//    }
-// });
