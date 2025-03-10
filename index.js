@@ -39,3 +39,8 @@ var typed = new Typed(".multiple-text", {
 
 
 
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+darkModeToggle.addEventListener("click", () => {
+   document.body.classList.toggle("light-mode");
+});
